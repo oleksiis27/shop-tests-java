@@ -52,19 +52,22 @@ jobs:
       - name: Run tests
         run: ./gradlew test --no-daemon
 
-      - name: Generate Allure report
-        uses: simple-elf/allure-report-action@v1.12
+      - name: Install Allure CLI
         if: always()
-        with:
-          allure_results: build/allure-results
-          allure_history: allure-history
+        run: |
+          curl -sL https://github.com/allure-framework/allure2/releases/download/2.30.0/allure-2.30.0.tgz | tar -xz
+          echo "$PWD/allure-2.30.0/bin" >> $GITHUB_PATH
+
+      - name: Generate Allure report
+        if: always()
+        run: allure generate build/allure-results -o allure-report --clean
 
       - name: Upload Allure report
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: allure-report
-          path: allure-history
+          path: allure-report
           retention-days: 30
 
       - name: Stop shop-app services
