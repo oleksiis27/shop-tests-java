@@ -1,0 +1,36 @@
+<div>POST to http://localhost:8000/api/products</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;image_url&quot;: &quot;https://example.com/images/ipsam_blanditiis.jpg&quot;,
+    &quot;price&quot;: 299.73,
+    &quot;description&quot;: &quot;Asperiores consequatur suscipit ex voluptates labore error corporis eum accusamus earum cum mollitia similique.&quot;,
+    &quot;stock&quot;: 43,
+    &quot;name&quot;: &quot;Small Leather Table&quot;,
+    &quot;category_id&quot;: 1
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZXhwIjoxNzcxODM2MzA0fQ._DjjWFwDpJTHBm_1E7KZqleCj10M-e__m9BAK8tOJ18</div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;http://localhost:8000/api/products&#39; -H &#39;Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZXhwIjoxNzcxODM2MzA0fQ._DjjWFwDpJTHBm_1E7KZqleCj10M-e__m9BAK8tOJ18&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;image_url&quot;: &quot;https://example.com/images/ipsam_blanditiis.jpg&quot;,
+    &quot;price&quot;: 299.73,
+    &quot;description&quot;: &quot;Asperiores consequatur suscipit ex voluptates labore error corporis eum accusamus earum cum mollitia similique.&quot;,
+    &quot;stock&quot;: 43,
+    &quot;name&quot;: &quot;Small Leather Table&quot;,
+    &quot;category_id&quot;: 1
+}&#39;
+    </div>
+
