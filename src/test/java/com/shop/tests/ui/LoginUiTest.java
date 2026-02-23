@@ -27,7 +27,7 @@ public class LoginUiTest extends BaseUiTest {
     @Story("Valid Login")
     @Severity(SeverityLevel.BLOCKER)
     @Description("Login with valid credentials should redirect to home page and show user name in navbar")
-    @DisplayName("Login with valid credentials → redirect to home, user name visible")
+    @DisplayName("Login with valid credentials: redirect to home, user name visible")
     void loginWithValidCredentials() {
         loginPage.login(config.userEmail(), config.userPassword());
 
@@ -38,7 +38,7 @@ public class LoginUiTest extends BaseUiTest {
     @Story("Invalid Login")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Login with wrong password should display an error message")
-    @DisplayName("Login with wrong password → error message displayed")
+    @DisplayName("Login with wrong password: error message displayed")
     void loginWithWrongPassword() {
         loginPage.login(config.userEmail(), "wrongpassword");
 
@@ -49,7 +49,7 @@ public class LoginUiTest extends BaseUiTest {
     @Story("Navigation")
     @Severity(SeverityLevel.NORMAL)
     @Description("Clicking register link on login page should navigate to register page")
-    @DisplayName("Click register link → navigate to register page")
+    @DisplayName("Click register link: navigate to register page")
     void navigateToRegisterPage() {
         loginPage.clickRegisterLink();
 
@@ -61,7 +61,7 @@ public class LoginUiTest extends BaseUiTest {
     @Story("Logout")
     @Severity(SeverityLevel.CRITICAL)
     @Description("After logout, Login and Register links should be visible in navbar")
-    @DisplayName("Logout → Login/Register links visible")
+    @DisplayName("Logout: Login/Register links visible")
     void logoutShowsLoginRegisterLinks() {
         loginPage.login(config.userEmail(), config.userPassword());
         navBar.shouldBeLoggedIn();

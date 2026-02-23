@@ -48,7 +48,7 @@ public class CartUiTest extends BaseUiTest {
     @Story("View Cart")
     @Severity(SeverityLevel.BLOCKER)
     @Description("Product added to cart is visible in the cart page")
-    @DisplayName("Add product → visible in cart")
+    @DisplayName("Add product: visible in cart")
     void addedProductVisibleInCart() {
         addProductToCart();
         cartPage.openPage();
@@ -60,7 +60,7 @@ public class CartUiTest extends BaseUiTest {
     @Story("Update Quantity")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Increasing item quantity updates the total")
-    @DisplayName("Change quantity → total updates")
+    @DisplayName("Change quantity: total updates")
     void changeQuantityUpdatesTotal() {
         addProductToCart();
         cartPage.openPage();
@@ -79,7 +79,7 @@ public class CartUiTest extends BaseUiTest {
     @Story("Remove Item")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Removing an item from cart makes it disappear")
-    @DisplayName("Remove item → disappears from cart")
+    @DisplayName("Remove item: disappears from cart")
     void removeItemFromCart() {
         addProductToCart();
         cartPage.openPage();
@@ -94,7 +94,7 @@ public class CartUiTest extends BaseUiTest {
     @Story("Clear Cart")
     @Severity(SeverityLevel.NORMAL)
     @Description("Clearing the cart removes all items")
-    @DisplayName("Clear cart → cart is empty")
+    @DisplayName("Clear cart: cart is empty")
     void clearCartRemovesAllItems() {
         addProductToCart();
         cartPage.openPage();
@@ -108,7 +108,7 @@ public class CartUiTest extends BaseUiTest {
     @Story("Checkout")
     @Severity(SeverityLevel.BLOCKER)
     @Description("Checkout creates an order and redirects to orders page")
-    @DisplayName("Checkout → order created, redirect to orders")
+    @DisplayName("Checkout: order created, redirect to orders")
     void checkoutCreatesOrder() {
         addProductToCart();
         cartPage.openPage();

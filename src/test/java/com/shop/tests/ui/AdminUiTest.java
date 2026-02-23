@@ -30,7 +30,7 @@ public class AdminUiTest extends BaseUiTest {
     @Story("Admin Orders")
     @Severity(SeverityLevel.BLOCKER)
     @Description("Admin can see all orders in the admin panel")
-    @DisplayName("Admin opens orders tab → all orders visible")
+    @DisplayName("Admin opens orders tab: all orders visible")
     void adminSeesAllOrders() {
         adminPage.switchToOrdersTab();
 
@@ -41,7 +41,7 @@ public class AdminUiTest extends BaseUiTest {
     @Story("Admin Orders")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Admin can change order status from pending to confirmed")
-    @DisplayName("Admin updates order status → status changes to confirmed")
+    @DisplayName("Admin updates order status: status changes to confirmed")
     void adminUpdatesOrderStatus() {
         adminPage.switchToOrdersTab();
 
@@ -55,7 +55,7 @@ public class AdminUiTest extends BaseUiTest {
     @Story("Admin Products")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Admin can create a new product via the admin panel")
-    @DisplayName("Admin adds product → product appears in table")
+    @DisplayName("Admin adds product: product appears in table")
     void adminCreatesProduct() {
         adminPage.switchToProductsTab();
         int initialCount = adminPage.getProductCount();
@@ -76,7 +76,7 @@ public class AdminUiTest extends BaseUiTest {
     @Story("Admin Products")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Admin can delete a product from the admin panel")
-    @DisplayName("Admin deletes product → product disappears from table")
+    @DisplayName("Admin deletes product: product disappears from table")
     void adminDeletesProduct() {
         adminPage.switchToProductsTab();
         int initialCount = adminPage.getProductCount();

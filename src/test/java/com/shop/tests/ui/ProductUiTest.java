@@ -30,7 +30,7 @@ public class ProductUiTest extends BaseUiTest {
     @Story("Product Details")
     @Severity(SeverityLevel.BLOCKER)
     @Description("Opening a product page shows all product details: name, price, description")
-    @DisplayName("Open product page → all details displayed")
+    @DisplayName("Open product page: all details displayed")
     void productPageShowsDetails() {
         productPage.openPage(testProductId);
 
@@ -43,7 +43,7 @@ public class ProductUiTest extends BaseUiTest {
     @Story("Add to Cart")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Logged-in user can add product to cart and sees success message")
-    @DisplayName("Add product to cart → success message shown")
+    @DisplayName("Add product to cart: success message shown")
     void addProductToCart() {
         loginPage.openPage();
         loginPage.login(config.userEmail(), config.userPassword());
@@ -61,7 +61,7 @@ public class ProductUiTest extends BaseUiTest {
     @Story("Add to Cart")
     @Severity(SeverityLevel.NORMAL)
     @Description("Unauthorized user is redirected to login when trying to add product to cart")
-    @DisplayName("Unauthorized add to cart → redirect to login")
+    @DisplayName("Unauthorized add to cart: redirect to login")
     void unauthorizedAddToCartRedirectsToLogin() {
         productPage.openPage(testProductId);
         productPage.addToCart();

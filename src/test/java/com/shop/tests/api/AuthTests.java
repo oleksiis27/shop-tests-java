@@ -32,7 +32,7 @@ public class AuthTests {
     @Story("Registration")
     @Severity(SeverityLevel.BLOCKER)
     @Description("Register a new user and verify response fields")
-    @DisplayName("Register new user → 201")
+    @DisplayName("Register new user: 201")
     void registerNewUser() {
         authApi.register(userEmail, userPassword, userName)
                 .then()
@@ -48,7 +48,7 @@ public class AuthTests {
     @Story("Registration")
     @Severity(SeverityLevel.NORMAL)
     @Description("Attempt to register with an already existing email should return 409")
-    @DisplayName("Register duplicate email → 409")
+    @DisplayName("Register duplicate email: 409")
     void registerDuplicateEmail() {
         String email = TestDataHelper.randomEmail();
         authApi.register(email, "password123", "First User");
@@ -62,7 +62,7 @@ public class AuthTests {
     @Story("Login")
     @Severity(SeverityLevel.BLOCKER)
     @Description("Login with valid credentials and verify access_token is returned")
-    @DisplayName("Login with valid credentials → 200")
+    @DisplayName("Login with valid credentials: 200")
     void loginWithValidCredentials() {
         authApi.login(config.adminEmail(), config.adminPassword())
                 .then()
@@ -75,7 +75,7 @@ public class AuthTests {
     @Story("Login")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Login with wrong password should return 401")
-    @DisplayName("Login with wrong password → 401")
+    @DisplayName("Login with wrong password: 401")
     void loginWithWrongPassword() {
         authApi.login(config.adminEmail(), "wrongpassword")
                 .then()
@@ -86,7 +86,7 @@ public class AuthTests {
     @Story("User Profile")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Get current user profile with valid token")
-    @DisplayName("GET /me with valid token → 200")
+    @DisplayName("GET /me with valid token: 200")
     void getMeWithValidToken() {
         String token = authApi.login(config.adminEmail(), config.adminPassword())
                 .then().statusCode(200)
@@ -104,7 +104,7 @@ public class AuthTests {
     @Story("User Profile")
     @Severity(SeverityLevel.CRITICAL)
     @Description("GET /me without Authorization header should return 403")
-    @DisplayName("GET /me without token → 403")
+    @DisplayName("GET /me without token: 403")
     void getMeWithoutToken() {
         authApi.getMeWithoutToken()
                 .then()
@@ -115,7 +115,7 @@ public class AuthTests {
     @Story("User Profile")
     @Severity(SeverityLevel.NORMAL)
     @Description("GET /me with invalid token should return 401")
-    @DisplayName("GET /me with invalid token → 401")
+    @DisplayName("GET /me with invalid token: 401")
     void getMeWithInvalidToken() {
         authApi.getMeWithInvalidToken()
                 .then()

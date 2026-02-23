@@ -51,7 +51,7 @@ public class CartTests {
     @Story("Add to Cart")
     @Severity(SeverityLevel.BLOCKER)
     @Description("Add a product to the cart and verify response")
-    @DisplayName("Add item to cart → 201")
+    @DisplayName("Add item to cart: 201")
     void addItemToCart() {
         cartApi.addItem(token, testProductId, 2)
                 .then()
@@ -67,7 +67,7 @@ public class CartTests {
     @Story("View Cart")
     @Severity(SeverityLevel.BLOCKER)
     @Description("Get cart after adding an item and verify contents and total")
-    @DisplayName("Get cart → items contain added product, total correct")
+    @DisplayName("Get cart: items contain added product, total correct")
     void getCartWithItem() {
         cartApi.addItem(token, testProductId, 2)
                 .then().statusCode(201);
@@ -85,7 +85,7 @@ public class CartTests {
     @Story("Add to Cart")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Adding the same product again should increase quantity")
-    @DisplayName("Add same product again → quantity increases")
+    @DisplayName("Add same product again: quantity increases")
     void addSameProductIncreasesQuantity() {
         cartApi.addItem(token, testProductId, 2)
                 .then().statusCode(201);
@@ -104,7 +104,7 @@ public class CartTests {
     @Story("Update Cart")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Update cart item quantity")
-    @DisplayName("Update item quantity → 200")
+    @DisplayName("Update item quantity: 200")
     void updateItemQuantity() {
         int itemId = cartApi.addItem(token, testProductId, 2)
                 .then().statusCode(201)
@@ -120,7 +120,7 @@ public class CartTests {
     @Story("Remove from Cart")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Delete a single item from the cart")
-    @DisplayName("Delete cart item → 204")
+    @DisplayName("Delete cart item: 204")
     void deleteCartItem() {
         int itemId = cartApi.addItem(token, testProductId, 2)
                 .then().statusCode(201)
@@ -140,7 +140,7 @@ public class CartTests {
     @Story("Remove from Cart")
     @Severity(SeverityLevel.NORMAL)
     @Description("Clear entire cart and verify it's empty")
-    @DisplayName("Clear cart → 204, cart empty after")
+    @DisplayName("Clear cart: 204, cart empty after")
     void clearCart() {
         cartApi.addItem(token, testProductId, 1).then().statusCode(201);
         cartApi.addItem(token, testProductId2, 1).then().statusCode(201);
@@ -160,7 +160,7 @@ public class CartTests {
     @Story("Add to Cart")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Adding item without auth should return 403")
-    @DisplayName("Add item without auth → 403")
+    @DisplayName("Add item without auth: 403")
     void addItemWithoutAuth() {
         cartApi.addItemWithoutAuth(testProductId, 1)
                 .then()

@@ -32,7 +32,7 @@ public class ProductTests {
     @Story("Product List")
     @Severity(SeverityLevel.BLOCKER)
     @Description("Get products list with default pagination")
-    @DisplayName("Get products list → 200, items not empty")
+    @DisplayName("Get products list: 200, items not empty")
     void getProductsList() {
         productApi.getProducts(null)
                 .then()
@@ -116,7 +116,7 @@ public class ProductTests {
     @Story("Product Details")
     @Severity(SeverityLevel.BLOCKER)
     @Description("Get product by ID and verify all fields are present")
-    @DisplayName("Get product by ID → 200")
+    @DisplayName("Get product by ID: 200")
     void getProductById() {
         productApi.getProduct(1)
                 .then()
@@ -136,7 +136,7 @@ public class ProductTests {
     @Story("Product Details")
     @Severity(SeverityLevel.NORMAL)
     @Description("Get non-existent product should return 404")
-    @DisplayName("Get non-existent product → 404")
+    @DisplayName("Get non-existent product: 404")
     void getNonExistentProduct() {
         productApi.getProduct(99999)
                 .then()
@@ -147,7 +147,7 @@ public class ProductTests {
     @Story("Product Management")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Admin creates a new product successfully")
-    @DisplayName("Create product (admin) → 201")
+    @DisplayName("Create product (admin): 201")
     void createProductAsAdmin() {
         Map<String, Object> product = TestDataHelper.randomProduct(1);
 
@@ -165,7 +165,7 @@ public class ProductTests {
     @Story("Product Management")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Regular user cannot create a product")
-    @DisplayName("Create product (user) → 403")
+    @DisplayName("Create product (user): 403")
     void createProductAsUser() {
         Map<String, Object> product = TestDataHelper.randomProduct(1);
 
@@ -178,7 +178,7 @@ public class ProductTests {
     @Story("Product Management")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Unauthenticated request cannot create a product")
-    @DisplayName("Create product without auth → 403")
+    @DisplayName("Create product without auth: 403")
     void createProductWithoutAuth() {
         Map<String, Object> product = TestDataHelper.randomProduct(1);
 
@@ -191,7 +191,7 @@ public class ProductTests {
     @Story("Product Management")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Admin updates a product and verifies changes")
-    @DisplayName("Update product (admin) → 200")
+    @DisplayName("Update product (admin): 200")
     void updateProductAsAdmin() {
         // Create a product to update
         Map<String, Object> product = TestDataHelper.randomProduct(1);
@@ -211,7 +211,7 @@ public class ProductTests {
     @Story("Product Management")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Admin deletes a product successfully")
-    @DisplayName("Delete product (admin) → 204")
+    @DisplayName("Delete product (admin): 204")
     void deleteProductAsAdmin() {
         // Create a product to delete
         Map<String, Object> product = TestDataHelper.randomProduct(1);
@@ -233,7 +233,7 @@ public class ProductTests {
     @Story("Product Management")
     @Severity(SeverityLevel.NORMAL)
     @Description("Deleting a non-existent product should return 404")
-    @DisplayName("Delete non-existent product → 404")
+    @DisplayName("Delete non-existent product: 404")
     void deleteNonExistentProduct() {
         productApi.deleteProduct(adminToken, 99999)
                 .then()

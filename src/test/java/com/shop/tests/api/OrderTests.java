@@ -56,7 +56,7 @@ public class OrderTests {
     @Story("Create Order")
     @Severity(SeverityLevel.BLOCKER)
     @Description("Create order from non-empty cart and verify response")
-    @DisplayName("Create order from cart → 201, status=pending")
+    @DisplayName("Create order from cart: 201, status=pending")
     void createOrderFromCart() {
         cartApi.addItem(userToken, testProductId, 2).then().statusCode(201);
 
@@ -76,7 +76,7 @@ public class OrderTests {
     @Story("Create Order")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Creating an order from an empty cart should return 400")
-    @DisplayName("Create order from empty cart → 400")
+    @DisplayName("Create order from empty cart: 400")
     void createOrderFromEmptyCart() {
         orderApi.createOrder(userToken)
                 .then()
@@ -105,7 +105,7 @@ public class OrderTests {
     @Story("View Orders")
     @Severity(SeverityLevel.BLOCKER)
     @Description("Get user orders list and verify it contains the created order")
-    @DisplayName("Get orders list → contains created order")
+    @DisplayName("Get orders list: contains created order")
     void getOrdersList() {
         int orderId = createOrderWithProduct();
 
@@ -119,7 +119,7 @@ public class OrderTests {
     @Story("View Orders")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Get order by ID and verify all fields")
-    @DisplayName("Get order by ID → 200")
+    @DisplayName("Get order by ID: 200")
     void getOrderById() {
         int orderId = createOrderWithProduct();
 
@@ -138,7 +138,7 @@ public class OrderTests {
     @Story("View Orders")
     @Severity(SeverityLevel.CRITICAL)
     @Description("User should not be able to access another user's order")
-    @DisplayName("Get another user's order → 404")
+    @DisplayName("Get another user's order: 404")
     void getOtherUserOrder() {
         int orderId = createOrderWithProduct();
 
@@ -153,7 +153,7 @@ public class OrderTests {
     @Story("Admin Orders")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Admin can get all orders")
-    @DisplayName("Admin: get all orders → 200")
+    @DisplayName("Admin: get all orders - 200")
     void adminGetAllOrders() {
         createOrderWithProduct();
 
@@ -167,7 +167,7 @@ public class OrderTests {
     @Story("Admin Orders")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Admin updates order status from pending to confirmed")
-    @DisplayName("Admin: pending → confirmed → 200")
+    @DisplayName("Admin: pending; confirmed: 200")
     void adminUpdateStatusToConfirmed() {
         int orderId = createOrderWithProduct();
 
@@ -181,7 +181,7 @@ public class OrderTests {
     @Story("Admin Orders")
     @Severity(SeverityLevel.NORMAL)
     @Description("Invalid status transition should return 400")
-    @DisplayName("Admin: invalid status transition → 400")
+    @DisplayName("Admin: invalid status transition: 400")
     void adminInvalidStatusTransition() {
         int orderId = createOrderWithProduct();
 
@@ -194,7 +194,7 @@ public class OrderTests {
     @Story("Admin Orders")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Regular user cannot update order status")
-    @DisplayName("User: update order status → 403")
+    @DisplayName("User: update order status: 403")
     void userCannotUpdateStatus() {
         int orderId = createOrderWithProduct();
 

@@ -28,7 +28,7 @@ public class RegisterUiTest extends BaseUiTest {
     @Story("Valid Registration")
     @Severity(SeverityLevel.BLOCKER)
     @Description("Register a new user should auto-login and redirect to home page")
-    @DisplayName("Register new user → auto-login, redirect to home")
+    @DisplayName("Register new user: auto-login, redirect to home")
     void registerNewUser() {
         String name = TestDataHelper.randomName();
         String email = TestDataHelper.randomEmail();
@@ -43,7 +43,7 @@ public class RegisterUiTest extends BaseUiTest {
     @Story("Duplicate Registration")
     @Severity(SeverityLevel.NORMAL)
     @Description("Register with an already existing email should display error")
-    @DisplayName("Register with existing email → error message")
+    @DisplayName("Register with existing email: error message")
     void registerWithExistingEmail() {
         registerPage.register("Admin User", config.adminEmail(), "password123");
 
@@ -54,7 +54,7 @@ public class RegisterUiTest extends BaseUiTest {
     @Story("Navigation")
     @Severity(SeverityLevel.NORMAL)
     @Description("Clicking login link on register page should navigate to login page")
-    @DisplayName("Click login link → navigate to login page")
+    @DisplayName("Click login link: navigate to login page")
     void navigateToLoginPage() {
         registerPage.clickLoginLink();
 

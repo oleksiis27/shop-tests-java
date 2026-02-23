@@ -49,7 +49,7 @@ public class OrderUiTest extends BaseUiTest {
     @Story("Order List")
     @Severity(SeverityLevel.BLOCKER)
     @Description("Created order appears in the orders list with pending status")
-    @DisplayName("Order created → appears in list with pending status")
+    @DisplayName("Order created: appears in list with pending status")
     void orderAppearsInList() {
         ordersPage.shouldHaveOrders();
 
@@ -61,7 +61,7 @@ public class OrderUiTest extends BaseUiTest {
     @Story("Order Details")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Order details show correct total amount")
-    @DisplayName("Order details → total is correct")
+    @DisplayName("Order details: total is correct")
     void orderDetailsShowTotal() {
         ordersPage.shouldHaveOrders();
 

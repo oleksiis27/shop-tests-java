@@ -25,7 +25,7 @@ public class HomePageUiTest extends BaseUiTest {
     @Story("Page Load")
     @Severity(SeverityLevel.BLOCKER)
     @Description("Home page loads and displays product cards")
-    @DisplayName("Home page loads → products displayed")
+    @DisplayName("Home page loads: products displayed")
     void homePageLoadsWithProducts() {
         homePage.productsShouldBeDisplayed();
     }
@@ -34,9 +34,9 @@ public class HomePageUiTest extends BaseUiTest {
     @Story("Search")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Searching for a product filters the results")
-    @DisplayName("Search product → results filtered")
+    @DisplayName("Search product: results filtered")
     void searchProductFiltersResults() {
-        int initialCount = homePage.getProductCards().size();
+        homePage.getProductCards().size();
 
         homePage.searchProduct("Laptop");
 
@@ -47,7 +47,7 @@ public class HomePageUiTest extends BaseUiTest {
     @Story("Filter")
     @Severity(SeverityLevel.CRITICAL)
     @Description("Filtering by category shows only matching products")
-    @DisplayName("Filter by category → matching products shown")
+    @DisplayName("Filter by category: matching products shown")
     void filterByCategory() {
         homePage.selectCategory("Electronics");
 
@@ -58,7 +58,7 @@ public class HomePageUiTest extends BaseUiTest {
     @Story("Sort")
     @Severity(SeverityLevel.NORMAL)
     @Description("Sorting by price ascending orders products correctly")
-    @DisplayName("Sort by price asc → products ordered correctly")
+    @DisplayName("Sort by price asc: products ordered correctly")
     void sortByPriceAscending() {
         homePage.selectSort("Price");
 
@@ -69,7 +69,7 @@ public class HomePageUiTest extends BaseUiTest {
     @Story("Pagination")
     @Severity(SeverityLevel.NORMAL)
     @Description("Pagination allows navigating between pages of products")
-    @DisplayName("Click next/prev page → page changes")
+    @DisplayName("Click next/prev page: page changes")
     void paginationWorks() {
         homePage.productsShouldBeDisplayed();
 
