@@ -4,6 +4,7 @@ import com.codeborne.selenide.Selenide;
 import com.shop.pages.*;
 import com.shop.pages.components.NavBar;
 import io.qameta.allure.*;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,11 +15,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Feature("Orders")
 public class OrderUiTest extends BaseUiTest {
 
+    private static int testProductId;
     private final LoginPage loginPage = new LoginPage();
     private final ProductPage productPage = new ProductPage();
     private final CartPage cartPage = new CartPage();
     private final OrdersPage ordersPage = new OrdersPage();
     private final NavBar navBar = new NavBar();
+
+    @BeforeAll
+    static void createProduct() {
+        testProductId = createTestProduct();
+    }
 
     @BeforeEach
     void setUp() {
@@ -27,7 +34,7 @@ public class OrderUiTest extends BaseUiTest {
         navBar.shouldBeLoggedIn();
 
         // Add product and checkout to create an order
-        productPage.openPage(1);
+        productPage.openPage(testProductId);
         productPage.setQuantity(1);
         productPage.addToCart();
         productPage.getSuccessMessage();

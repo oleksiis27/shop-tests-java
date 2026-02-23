@@ -4,6 +4,7 @@ import com.shop.pages.LoginPage;
 import com.shop.pages.ProductPage;
 import com.shop.pages.components.NavBar;
 import io.qameta.allure.*;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,9 +16,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Feature("Product Page")
 public class ProductUiTest extends BaseUiTest {
 
+    private static int testProductId;
     private final ProductPage productPage = new ProductPage();
     private final LoginPage loginPage = new LoginPage();
     private final NavBar navBar = new NavBar();
+
+    @BeforeAll
+    static void createProduct() {
+        testProductId = createTestProduct();
+    }
 
     @Test
     @Story("Product Details")
@@ -25,7 +32,7 @@ public class ProductUiTest extends BaseUiTest {
     @Description("Opening a product page shows all product details: name, price, description")
     @DisplayName("Open product page → all details displayed")
     void productPageShowsDetails() {
-        productPage.openPage(1);
+        productPage.openPage(testProductId);
 
         productPage.shouldBeDisplayed();
         assertThat(productPage.getProductName()).isNotEmpty();
@@ -42,7 +49,7 @@ public class ProductUiTest extends BaseUiTest {
         loginPage.login(config.userEmail(), config.userPassword());
         navBar.shouldBeLoggedIn();
 
-        productPage.openPage(1);
+        productPage.openPage(testProductId);
         productPage.setQuantity(1);
         productPage.addToCart();
 
@@ -56,7 +63,7 @@ public class ProductUiTest extends BaseUiTest {
     @Description("Unauthorized user is redirected to login when trying to add product to cart")
     @DisplayName("Unauthorized add to cart → redirect to login")
     void unauthorizedAddToCartRedirectsToLogin() {
-        productPage.openPage(1);
+        productPage.openPage(testProductId);
         productPage.addToCart();
 
         webdriver().shouldHave(urlContaining("/login"));

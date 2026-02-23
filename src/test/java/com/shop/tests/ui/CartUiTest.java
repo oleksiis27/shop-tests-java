@@ -6,6 +6,7 @@ import com.shop.pages.LoginPage;
 import com.shop.pages.ProductPage;
 import com.shop.pages.components.NavBar;
 import io.qameta.allure.*;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,10 +19,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Feature("Cart")
 public class CartUiTest extends BaseUiTest {
 
+    private static int testProductId;
     private final LoginPage loginPage = new LoginPage();
     private final ProductPage productPage = new ProductPage();
     private final CartPage cartPage = new CartPage();
     private final NavBar navBar = new NavBar();
+
+    @BeforeAll
+    static void createProduct() {
+        testProductId = createTestProduct();
+    }
 
     @BeforeEach
     void setUp() {
@@ -31,7 +38,7 @@ public class CartUiTest extends BaseUiTest {
     }
 
     private void addProductToCart() {
-        productPage.openPage(1);
+        productPage.openPage(testProductId);
         productPage.setQuantity(1);
         productPage.addToCart();
         productPage.getSuccessMessage();

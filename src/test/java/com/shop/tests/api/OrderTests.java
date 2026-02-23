@@ -2,11 +2,17 @@ package com.shop.tests.api;
 
 import com.shop.api.CartApi;
 import com.shop.api.OrderApi;
+import com.shop.api.ProductApi;
 import com.shop.helpers.AuthHelper;
+import com.shop.helpers.TestDataHelper;
 import io.qameta.allure.*;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.hamcrest.Matchers.*;
 
@@ -16,9 +22,21 @@ public class OrderTests {
 
     private static final CartApi cartApi = new CartApi();
     private static final OrderApi orderApi = new OrderApi();
+    private static final ProductApi productApi = new ProductApi();
 
+    private static int testProductId;
     private String userToken;
     private String adminToken;
+
+    @BeforeAll
+    static void createTestProduct() {
+        String adminToken = AuthHelper.getAdminToken();
+        Map<String, Object> product = new HashMap<>(TestDataHelper.randomProduct(1));
+        product.put("stock", 9999);
+        testProductId = productApi.createProduct(adminToken, product)
+                .then().statusCode(201)
+                .extract().path("id");
+    }
 
     @BeforeEach
     void setUp() {
@@ -27,7 +45,7 @@ public class OrderTests {
     }
 
     private int createOrderWithProduct() {
-        cartApi.addItem(userToken, 1, 2).then().statusCode(201);
+        cartApi.addItem(userToken, testProductId, 2).then().statusCode(201);
 
         return orderApi.createOrder(userToken)
                 .then().statusCode(201)
@@ -40,7 +58,7 @@ public class OrderTests {
     @Description("Create order from non-empty cart and verify response")
     @DisplayName("Create order from cart → 201, status=pending")
     void createOrderFromCart() {
-        cartApi.addItem(userToken, 1, 2).then().statusCode(201);
+        cartApi.addItem(userToken, testProductId, 2).then().statusCode(201);
 
         orderApi.createOrder(userToken)
                 .then()
@@ -49,7 +67,7 @@ public class OrderTests {
                 .body("status", equalTo("pending"))
                 .body("total", greaterThan(0f))
                 .body("items", hasSize(1))
-                .body("items[0].product_id", equalTo(1))
+                .body("items[0].product_id", equalTo(testProductId))
                 .body("items[0].quantity", equalTo(2))
                 .body("items[0].price", greaterThan(0f));
     }
@@ -71,7 +89,7 @@ public class OrderTests {
     @Description("After creating an order the cart should be empty")
     @DisplayName("Cart is empty after order creation")
     void cartEmptyAfterOrder() {
-        cartApi.addItem(userToken, 1, 1).then().statusCode(201);
+        cartApi.addItem(userToken, testProductId, 1).then().statusCode(201);
 
         orderApi.createOrder(userToken)
                 .then().statusCode(201);
