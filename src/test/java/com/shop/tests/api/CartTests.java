@@ -1,4 +1,4 @@
-package com.shop.tests.cart;
+package com.shop.tests.api;
 
 import com.shop.api.CartApi;
 import com.shop.helpers.AuthHelper;

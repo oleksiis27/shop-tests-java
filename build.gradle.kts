@@ -19,11 +19,15 @@ val restAssuredVersion = "5.5.0"
 val junitVersion = "5.11.3"
 val allureVersion = "2.29.1"
 val jacksonVersion = "2.18.1"
+val selenideVersion = "7.7.3"
 
 dependencies {
     // REST Assured
     implementation("io.rest-assured:rest-assured:$restAssuredVersion")
     implementation("io.rest-assured:json-schema-validator:$restAssuredVersion")
+
+    // Selenide (UI testing)
+    implementation("com.codeborne:selenide:$selenideVersion")
 
     // Jackson
     implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
@@ -40,6 +44,7 @@ dependencies {
 
     // Allure
     implementation("io.qameta.allure:allure-rest-assured:$allureVersion")
+    implementation("io.qameta.allure:allure-selenide:$allureVersion")
     testImplementation("io.qameta.allure:allure-junit5:$allureVersion")
 
     // JUnit 5

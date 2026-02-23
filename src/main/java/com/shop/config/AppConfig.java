@@ -9,6 +9,9 @@ public interface AppConfig extends Config {
     @Key("base.url")
     String baseUrl();
 
+    @Key("ui.url")
+    String uiUrl();
+
     @Key("admin.email")
     String adminEmail();
 

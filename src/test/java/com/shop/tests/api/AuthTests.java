@@ -1,4 +1,4 @@
-package com.shop.tests.auth;
+package com.shop.tests.api;
 
 import com.shop.api.AuthApi;
 import com.shop.config.AppConfig;

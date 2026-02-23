@@ -1,4 +1,4 @@
-package com.shop.tests.orders;
+package com.shop.tests.api;
 
 import com.shop.api.CartApi;
 import com.shop.api.OrderApi;
